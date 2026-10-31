@@ -1,0 +1,10 @@
+# Inventario inicial de referencia
+# Código | Producto | Precio (centavos) | Existencias iniciales
+TET-500 | Te 500ml | 1500 | 50
+TET-1LT | Te 1 Litro | 3000 | 30
+TET-2LT | Te 2 Litros | 4500 | 20
+TET-5LT | Te 5 Litros | 9000 | 10
+
+Nota: al ejecutar el programa, las existencias persistentes se guardan en
+`inventario.bin` mediante la opción 6. Este archivo de texto sirve como
+inventario inicial legible para revisión y entrega.

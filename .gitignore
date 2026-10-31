@@ -1,0 +1,8 @@
+# Artefactos de compilación y persistencia local
+Debug/
+Release/
+x64/
+*.obj
+*.exe
+*.pdb
+inventario.bin

@@ -1,6 +1,8 @@
 ; =====================================================================
-; PROYECTO INTEGRADO: Sistema de Control de Inventario y Ventas - TEOLONGI
-; Arquitectura x86 (MASM / Irvine32) - Versión 100% Corregida
+; PROYECTO INTEGRADO: Sistema de Control de Inventario y Ventas
+; Arquitectura x86 (MASM / Irvine32)
+; Integrantes: Jesus Pavel Montoya Cerpa; Jesus Dadynirt Gamez Guerrero;
+;              Noel Sebastian Rodriguez Sainz
 ; =====================================================================
 
 .386
@@ -52,7 +54,7 @@ include Irvine32.inc
     msgArchivoCarg  BYTE 0Ah, 0Dh, "Inventario cargado desde archivo correctamente.", 0Ah, 0Dh, 0
     msgErrorArch    BYTE 0Ah, 0Dh, "Aviso: No se encontro archivo previo. Usando base inicial.", 0Ah, 0Dh, 0
 
-    filename        BYTE "inventario.txt", 0
+    filename        BYTE "inventario.bin", 0
     fileHandle      HANDLE ?
 
     ingresosAcumulados DWORD 0
@@ -69,8 +71,6 @@ include Irvine32.inc
 .code
 main PROC
     call ClrScr
-    call CargarInventarioInicio  
-
     ; --- INICIALIZACIÓN DEL CATÁLOGO BASE (4 PRODUCTOS CON ABC-123) ---
     mov numProductos, 4
 
@@ -187,6 +187,10 @@ main PROC
     mov eax, 10
     mov [stocks+12], eax
 
+    ; Si existe, se recuperan los stocks guardados de la sesión anterior.
+    ; El catálogo, nombres y precios base se inicializan siempre antes de leer.
+    call CargarInventarioInicio
+
 menu_principal:
     mov edx, OFFSET msgTitulo
     call WriteString
@@ -286,7 +290,7 @@ RegistrarProducto PROC
     call ReadString
 
     mov ebx, numProductos
-    shl ebx, 4
+    imul ebx, 20
     mov esi, OFFSET inputBuffer
     mov edi, OFFSET nombres
     add edi, ebx
@@ -439,7 +443,7 @@ ciclo_mostrar:
 
     mov edx, OFFSET nombres
     mov eax, esi
-    shl eax, 4              
+    imul eax, 20
     add edx, eax
     call WriteString
     mov al, ' '
@@ -477,7 +481,7 @@ BuscarProductoUI PROC
 
     mov esi, eax        
     mov edx, OFFSET nombres
-    shl eax, 4
+    imul eax, 20
     add edx, eax
     call WriteString
     call Crlf
