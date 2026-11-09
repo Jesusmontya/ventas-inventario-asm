@@ -8,7 +8,7 @@ Sistema de consola en MASM x86 de 32 bits con Irvine32. Capacidad: 10 productos;
 2. Agregar `AddTwo.asm` y habilitar MASM en Dependencias de compilación > Personalizaciones de compilación.
 3. Configurar los directorios de inclusión y bibliotecas de la instalación local de Irvine32, así como el enlace de `Irvine32.lib`, según la configuración del curso.
 4. Compilar y ejecutar en x86. El proyecto necesita Windows, MASM e Irvine32; no están incluidos aquí.
-5. El directorio de trabajo de Visual Studio determina dónde se lee y guarda `inventario.bin`. Para usar el archivo de prueba, copiar el incluido a ese directorio antes de ejecutar.
+5. El directorio de trabajo de Visual Studio determina dónde se lee y guarda `inventario.bin`. Para usar el archivo de prueba, copiar `inventario-ejemplo.bin` a ese directorio con el nombre `inventario.bin` antes de ejecutar.
 
 Si falta o es inválido el archivo, el programa informa del error y conserva el catálogo inicial integrado. El archivo de la versión anterior, que solo tenía 40 bytes de existencias, no es compatible; renómbralo o retíralo antes de usar esta versión.
 
@@ -21,6 +21,6 @@ Guardar reemplaza `inventario.bin` en el directorio de trabajo. Si una escritura
 ## Archivos
 
 - `AddTwo.asm`: código fuente.
-- `inventario.bin`: archivo de ejemplo con cuatro productos, formato INV1.
+- `inventario-ejemplo.bin`: archivo de ejemplo con cuatro productos, formato INV1.
 - `INFORME.md`: diseño, funcionamiento y decisiones.
 - `PRUEBAS.md`: casos para ejecutar en Windows; no se presentan como resultados obtenidos.
