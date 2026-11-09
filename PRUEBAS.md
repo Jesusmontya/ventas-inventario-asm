@@ -1,14 +1,29 @@
-# Tabla de pruebas
+# Plan de pruebas manuales
 
-Las pruebas se plantearon con el inventario inicial incluido. Los resultados obtenidos indican el comportamiento que muestra la ejecución manual del flujo descrito.
+Estas son entradas y resultados **esperados**. La columna de resultado obtenido debe llenarse tras ejecutar en Windows con MASM e Irvine32; no se ha ejecutado en ese entorno.
 
 | Caso | Entrada | Resultado esperado | Resultado obtenido |
 |---|---|---|---|
-| Consulta válida | Opción 2, índice `0` | Muestra `Te 500ml` | Se muestra el nombre del producto 0 |
-| Venta normal | Opción 3, índice `0`, cantidad `2` | Total `$30.00`; stock pasa de 50 a 48 | Total mostrado `30.0`; stock actualizado a 48 |
-| Venta con mayoreo | Opción 3, índice `1`, cantidad `5` | 5 × $30.00 − 2% = `$147.00` | Muestra aviso de descuento y total `147.0` |
-| Venta sin stock suficiente | Opción 3, índice `3`, cantidad `11` | Mensaje de existencias insuficientes | Se rechaza la operación |
-| Entrada permitida | Opción 4, índice `3`, cantidad `20` | Stock pasa de 10 a 30 | Operación exitosa |
-| Entrada que excede límite | Opción 4, índice `0`, cantidad `51` | Mensaje de máximo 100 unidades | Se rechaza la operación |
-| Código duplicado | Opción 1, código `TET-500` | Mensaje de código existente | Se rechaza el registro |
-| Guardado | Opción 6 | Crea/actualiza `inventario.bin` | Muestra confirmación de guardado |
+| Lista inicial | Abrir archivo de muestra; opción 2 | Cuatro tés, códigos válidos y precios con dos decimales MXN | Pendiente |
+| Alta válida | `ABC-123`, `Te verde`, `185.50`, `10` | Producto registrado; precio 185.50 MXN | Pendiente |
+| Duplicado | Registrar de nuevo `ABC-123` | Rechaza el código y permite capturarlo de nuevo | Pendiente |
+| Código inválido | `abc-123`, `ABC-12A`, `AB-1234` | Rechaza cada código | Pendiente |
+| Nombre inválido | Vacío o más de 25 caracteres | Rechaza y vuelve a pedir | Pendiente |
+| Precios válidos | `185.50`, `12.05`, `15`, `15.5` | 185.50, 12.05, 15.00, 15.50 MXN | Pendiente |
+| Precios inválidos | `0`, `10000`, `1.234`, `1,000`, `$1`, `12.` | Rechaza y vuelve a pedir | Pendiente |
+| Buscar | Opción 3, `TET-500` | Muestra datos del té de 500 ml | Pendiente |
+| Buscar inexistente | Opción 3, `ABC-999` | Mensaje de producto no encontrado | Pendiente |
+| Entrada válida | `TET-005`, 20 | Existencia de 10 a 30 | Pendiente |
+| Entrada excesiva | `TET-500`, 51 desde existencia 50 | Rechaza y conserva 50 | Pendiente |
+| Cantidad inválida | Venta o entrada: `0`, `-1`, `hola` | Rechaza y vuelve a pedir | Pendiente |
+| Venta normal | `TET-500`, 2 desde 50 | 30.00 MXN, existencia 48 | Pendiente |
+| Mayoreo | `TET-001`, 5 desde 30 | Descuento 2%, total 147.00 MXN, existencia 25 | Pendiente |
+| Venta excesiva | `TET-005`, 11 desde 10 | Rechaza sin alterar el catálogo ni ingresos | Pendiente |
+| Resumen inicial | Opción 6 con archivo de muestra intacto | 110 unidades y 3450.00 MXN; ingresos 0.00 MXN | Pendiente |
+| Guardar y recuperar | Registrar, guardar, salir y reiniciar | Se recuperan código, nombre, precio y existencia | Pendiente |
+| Archivo ausente | Renombrar inventario.bin, iniciar | Aviso y catálogo base | Pendiente |
+| Archivo inválido | Truncar o modificar firma de una copia, cargar | Aviso, sin reemplazar catálogo en memoria | Pendiente |
+| Salida con cambios | Modificar, seleccionar 9 | Ofrece guardar, descartar o cancelar | Pendiente |
+| Capacidad | Completar 10 productos e intentar otro | Informa que se alcanzó el máximo | Pendiente |
+
+Restaurar el archivo de muestra antes de cada caso independiente para obtener las existencias indicadas. Los resultados obtenidos y cualquier captura deben proceder de la ejecución real del equipo.
