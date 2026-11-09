@@ -4,8 +4,8 @@ Sistema de consola en MASM x86 de 32 bits con Irvine32. Capacidad: 10 productos;
 
 ## Compilar en Visual Studio
 
-1. Crear un proyecto vacío de C++ para Windows y elegir plataforma **x86**.
-2. Agregar `AddTwo.asm` y habilitar MASM en Dependencias de compilación > Personalizaciones de compilación.
+1. Abrir `VentasInventario.vcxproj` en Visual Studio y elegir plataforma **Win32** (x86). El proyecto usa por defecto `C:\Irvine`; ajustar `IrvineRoot` en el archivo del proyecto si la biblioteca está en otra carpeta.
+2. Instalar las herramientas de desarrollo de C++ para escritorio con MASM. El proyecto habilita MASM.
 3. Configurar los directorios de inclusión y bibliotecas de la instalación local de Irvine32, así como el enlace de `Irvine32.lib`, según la configuración del curso.
 4. Compilar y ejecutar en x86. El proyecto necesita Windows, MASM e Irvine32; no están incluidos aquí.
 5. El directorio de trabajo de Visual Studio determina dónde se lee y guarda `inventario.bin`. Para usar el archivo de prueba, copiar `inventario-ejemplo.bin` a ese directorio con el nombre `inventario.bin` antes de ejecutar.
@@ -20,6 +20,7 @@ Guardar reemplaza `inventario.bin` en el directorio de trabajo. Si una escritura
 
 ## Archivos
 
+- `VentasInventario.vcxproj`: proyecto de Visual Studio x86.
 - `AddTwo.asm`: código fuente.
 - `inventario-ejemplo.bin`: archivo de ejemplo con cuatro productos, formato INV1.
 - `INFORME.md`: diseño, funcionamiento y decisiones.
