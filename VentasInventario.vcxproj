@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{B71861A3-870A-4E23-81EC-D279AB21CC51}</ProjectGuid><RootNamespace>VentasInventario</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><ConfigurationType>Application</ConfigurationType><PlatformToolset>v143</PlatformToolset><CharacterSet>MultiByte</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings"><Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" /></ImportGroup>
+  <PropertyGroup><IrvineRoot Condition="'$(IrvineRoot)'==''">C:\Irvine</IrvineRoot><LinkIncremental>false</LinkIncremental></PropertyGroup>
+  <ItemDefinitionGroup>
+    <MASM><IncludePaths>$(IrvineRoot);%(IncludePaths)</IncludePaths></MASM>
+    <Link><SubSystem>Console</SubSystem><AdditionalLibraryDirectories>$(IrvineRoot);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>Irvine32.lib;kernel32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies><EntryPointSymbol>main</EntryPointSymbol></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><MASM Include="AddTwo.asm" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets"><Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" /></ImportGroup>
+</Project>
